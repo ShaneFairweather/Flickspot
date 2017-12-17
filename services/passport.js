@@ -24,26 +24,24 @@ passport.use(
     new GoogleStrategy({
         clientID: keys.googleClientID,
         clientSecret: keys.googleClientSecret,
-        callbackURL: '/auth/google/callback'
-    }, (accessToken, refreshToken, profile, done) => {
+        callbackURL: '/auth/google/callback',
+        proxy: true
+    },
+    async (accessToken, refreshToken, profile, done) => {
         const image = profile._json.image.url;
         console.log(profile);
-        User.findOne({ profileID: profile.id })
-            .then((existingUser) => {
-                if(existingUser) {
-                    done(null, existingUser);
-                } else {
-                    new User({
-                        profileID: profile.id,
-                        username: profile.displayName,
-                        imageURL: image.slice(0, image.length - 2) + '250'
-                    })
-                        .save()
-                        .then(user => done(null, user));
-                }
-            });
-
-    })
+        const existingUser = await User.findOne({ profileID: profile.id });
+        if(existingUser) {
+            return done(null, existingUser);
+        }
+        const user = await new User({
+            profileID: profile.id,
+            username: profile.displayName,
+            imageURL: image.slice(0, image.length - 2) + '250'
+        }).save();
+        done(null, user);
+    }
+    )
 );
 
 

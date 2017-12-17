@@ -45,3 +45,56 @@ passport.use(
 
     })
 );
+
+
+passport.use(
+    new FacebookStrategy(
+        {
+            clientID: keys.facebookClientID,
+            clientSecret: keys.facebookClientSecret,
+            callbackURL: '/auth/facebook/callback',
+            profileFields: ['id', 'displayName', 'picture.type(large)'],
+            proxy: true
+        },
+        async (accessToken, refreshToken, profile, done) => {
+            console.log(profile);
+            const existingUser = await User.findOne({profileId: profile.id});
+            if(existingUser) {
+                return done(null, existingUser);
+            }
+            const user = await new User({
+                profileID: profile.id,
+                username: profile.displayName,
+                imageURL: profile.photos[0].value
+            }).save();
+            done(null, user);
+
+        }
+    )
+);
+
+
+passport.use(
+    new GithubStrategy(
+        {
+            clientID: keys.githubClientID,
+            clientSecret: keys.githubClientSecret,
+            callbackURL: '/auth/github/callback',
+            profileFields: ['id', 'displayName', 'picture.type(large)'],
+            proxy: true
+        },
+        async (accessToken, refreshToken, profile, done) => {
+            console.log(profile);
+            const existingUser = await User.findOne({profileId: profile.id});
+            if(existingUser) {
+                return done(null, existingUser);
+            }
+            const user = await new User({
+                profileID: profile.id,
+                username: profile.displayName,
+                imageURL: profile.photos[0].value
+            }).save();
+            done(null, user);
+        }
+    )
+);

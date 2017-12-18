@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:300|Open+Sans:300,300i,400,400i,600,600i");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+* {
+  margin: 0;
+  padding: 0; }
+
+*, *::before, *::after {
+  box-sizing: inherit; }
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; }
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 100;
+  line-height: 1.6;
+  min-height: 100vh;
+  color: #ffffff;
+  background-color: #262930; }
+
+.header {
+  height: 7rem;
+  background-color: #999999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.4rem; }
+  .header .user-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end; }
+
+.searchbar {
+  flex: 0 0 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999999;
+  font-weight: 100; }
+  .searchbar__input {
+    font-family: inherit;
+    font-size: inherit;
+    color: #757575;
+    background-color: #f4f2f2;
+    border: none;
+    padding: .7rem 2rem;
+    border-radius: 100px;
+    width: 90%;
+    transition: all .2s;
+    margin-right: -3.25rem;
+    font-weight: 100; }
+    .searchbar__input:focus {
+      outline: none;
+      width: 100%;
+      background-color: #e4e2e2; }
+    .searchbar__input::-webkit-input-placeholder {
+      font-weight: 100;
+      color: #999999; }
+  .searchbar__input:focus + .searchbar__button {
+    background-color: #e4e2e2; }
+  .searchbar__button {
+    border: none;
+    background-color: #f4f2f2; }
+    .searchbar__button:focus {
+      outline: none;
+      background-color: #999999; }
+    .searchbar__button:active {
+      transform: translateY(2px); }
+  .searchbar__icon {
+    display: flex;
+    align-items: center;
+    color: #777675;
+    font-size: 1.4rem; }

@@ -1,0 +1,47 @@
+@mixin push--auto {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+}
+
+
+@mixin responsive-ratio($x,$y, $pseudo: false) {
+  $padding: unquote( ( $y / $x ) * 100 + '%' );
+  @if $pseudo {
+    &:before {
+      @include pseudo($pos: relative);
+      width: 100%;
+      padding-top: $padding;
+    }
+  } @else {
+    padding-top: $padding;
+  }
+}
+
+
+$breakpoints: (
+        "xs":        400px,
+        "xs-wide":   480px,
+        "sm":        520px,
+        "sm-mid":    570px,
+        "sm-wide":  640px,
+        "md":        768px,
+        "md-wide":  1024px,
+        "lg":       1248px,
+        "lg-wide":  1440px
+);
+
+
+@mixin screen($width, $type: min) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+    @if $type == max {
+      $width: $width - 1px;
+    }
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}
+

@@ -1,0 +1,14 @@
+.header {
+  height: 7rem;
+  background-color: $gray-3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.4rem;
+  .user-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}
+

@@ -1,15 +1,12 @@
 import React from 'react';
-import Header from './Header';
-import Searchbar from './Searchbar';
-import Sidebar from './Sidebar';
+import FeaturedMovies from './FeaturedMovies';
+import FeaturedLists from './FeaturedLists';
 
 const Home = () => {
     return (
-        <div>
-            <Header />
-            <div className="searchbar-container">
-                <Searchbar />
-            </div>
+        <div className="home">
+            <FeaturedMovies />
+            <FeaturedLists />
         </div>
     )
 };

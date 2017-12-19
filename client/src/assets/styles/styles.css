@@ -53,6 +53,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center; }
+  .user-nav__profile {
+    overflow: hidden; }
+    .user-nav__profile img {
+      border-radius: 50%;
+      max-height: 30px; }
 
 .searchbar-container {
   padding: 1.8rem 2rem;

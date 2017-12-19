@@ -34,5 +34,13 @@
     align-items: center;
     justify-content: center;
   }
+  &__profile {
+    //display: flex;
+    overflow: hidden;
+    img {
+      border-radius: 50%;
+      max-height: 30px;
+    }
+  }
 }
 

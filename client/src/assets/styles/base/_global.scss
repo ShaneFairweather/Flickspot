@@ -18,5 +18,13 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   color: $white;
-  background-color: $dark-alt;
+  background-color: $dark-3;
+}
+
+.container {
+  &--header {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+  }
 }

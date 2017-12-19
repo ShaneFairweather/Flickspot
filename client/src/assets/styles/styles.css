@@ -17,19 +17,46 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   color: #ffffff;
-  background-color: #262930; }
+  background-color: #061217; }
+
+.container--header {
+  display: flex;
+  justify-content: space-between;
+  height: 100%; }
 
 .header {
-  height: 7rem;
-  background-color: #999999;
+  height: 6rem;
+  background-color: #f4f2f2;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 1.4rem; }
-  .header .user-nav {
+
+.user-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  align-self: stretch; }
+  .user-nav > * {
+    padding: 0 2rem;
+    cursor: pointer;
+    height: 100%;
     display: flex;
-    flex-direction: row;
-    justify-content: flex-end; }
+    align-items: center; }
+    .user-nav > *:hover {
+      background-color: #999999; }
+  .user-nav__icon {
+    height: 2.25rem;
+    width: 2.25rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+
+.searchbar-container {
+  padding: 1.8rem 2rem;
+  background-color: gray; }
 
 .searchbar {
   flex: 0 0 40%;
@@ -42,17 +69,17 @@ body {
     font-family: inherit;
     font-size: inherit;
     color: #757575;
-    background-color: #f4f2f2;
+    background-color: #e4e2e2;
     border: none;
     padding: .7rem 2rem;
     border-radius: 100px;
-    width: 90%;
+    width: 50%;
     transition: all .2s;
     margin-right: -3.25rem;
     font-weight: 100; }
     .searchbar__input:focus {
       outline: none;
-      width: 100%;
+      width: 60%;
       background-color: #e4e2e2; }
     .searchbar__input::-webkit-input-placeholder {
       font-weight: 100;
@@ -61,7 +88,7 @@ body {
     background-color: #e4e2e2; }
   .searchbar__button {
     border: none;
-    background-color: #f4f2f2; }
+    background-color: #e4e2e2; }
     .searchbar__button:focus {
       outline: none;
       background-color: #999999; }
@@ -72,3 +99,8 @@ body {
     align-items: center;
     color: #777675;
     font-size: 1.4rem; }
+
+.sidebar {
+  display: flex;
+  background-color: #262930;
+  flex-direction: column; }

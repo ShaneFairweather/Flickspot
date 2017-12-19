@@ -1,0 +1,17 @@
+.sidebar {
+  display: flex;
+  background-color: $dark-2;
+  flex-direction: column;
+  .side-nav {
+    &__item {
+
+    }
+    &__link {
+
+    }
+    &__icon {
+
+    }
+  }
+}
+

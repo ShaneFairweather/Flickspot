@@ -2,11 +2,13 @@ import React from 'react';
 import FeaturedMovies from './FeaturedMovies';
 import FeaturedLists from './FeaturedLists';
 
-const Home = () => {
+const Home = (props) => {
     return (
         <div className="home">
-            <FeaturedMovies />
-            <FeaturedLists />
+            <div className="container container--main">
+                <FeaturedMovies movies={props.featuredMovies} />
+                <FeaturedLists />
+            </div>
         </div>
     )
 };

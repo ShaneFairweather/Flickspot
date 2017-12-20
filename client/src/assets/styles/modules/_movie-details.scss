@@ -1,0 +1,31 @@
+.movie-details {
+  color: white;
+  display: flex;
+  &__image {
+    img {
+      max-height: 450px;
+    }
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0 4rem;
+  }
+  &__title{
+  }
+  &__overview {
+    font-size: 1.7rem;
+    padding-top: 1rem;
+  }
+  &__rating {
+  }
+  &__content {
+  }
+  &__year {
+    color: $gray-3;
+    font-weight: 300;
+    font-size: 2.7rem;
+  }
+}

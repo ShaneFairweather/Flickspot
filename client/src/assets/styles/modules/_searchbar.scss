@@ -18,14 +18,20 @@
     border: none;
     padding: .7rem 2rem;
     border-radius: 100px;
-    width: 50%;
     transition: all .2s;
     margin-right: -3.25rem;
     font-weight: 100;
+    width: 90%;
+    @include screen('sm') {
+      width: 50%;
+    }
     &:focus {
       outline: none;
-      width: 60%;
       background-color: $gray-2;
+      width: 100%;
+      @include screen('sm') {
+        width: 56%;
+      }
     }
 
     &::-webkit-input-placeholder {
@@ -55,5 +61,17 @@
     align-items: center;
     color: #777675;
     font-size: 1.4rem;
+  }
+}
+
+.searchbar-result {
+  display: flex;
+  &__image {
+    img {
+      max-height: 100px;
+    }
+  }
+  &__content {
+
   }
 }

@@ -1,0 +1,9 @@
+.featured-movies {
+  &__list {
+    display: flex;
+    overflow-x: scroll;
+    li {
+      padding: 20px 20px 20px 0;
+    }
+  }
+}

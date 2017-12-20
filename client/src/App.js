@@ -9,13 +9,14 @@ import * as actions from './actions';
 import Header from './components/Header';
 import Searchbar from './components/Searchbar';
 import Home from './components/Home';
-import ViewFilm from './components/ViewFilm';
+import ShowMovie from './components/ShowMovie';
 import SignIn from './components/SignIn';
 
 
 class App extends Component {
     componentDidMount() {
         this.props.fetchUser();
+        this.props.fetchFeaturedMovies();
     }
 
     render() {
@@ -24,12 +25,30 @@ class App extends Component {
                 <BrowserRouter>
                     <div>
                         <Header />
-                        <div className="searchbar-container">
-                            <Searchbar />
-                        </div>
-                        <Route exact path="/" component={Home}/>
-                        <Route path="/show" component={ViewFilm}/>
-                        <Route path="/signin" component={SignIn}/>
+                        <Searchbar />
+                        <Route
+                            exact
+                            path="/"
+                            render={(props) => (
+                                <Home
+                                    {...props}
+                                    featuredMovies={this.props.featuredMovies}
+                                />)}
+                        />
+                        <Route
+                            exact
+                            path="/movies/:id"
+                            component={ShowMovie}
+                        />
+                        <Route
+                            exact
+                            path="/signin"
+                            render={(props) => (
+                                <SignIn
+                                    {...props}
+                                    user={this.props.user}
+                                />)}
+                        />
                     </div>
                 </BrowserRouter>
             </div>
@@ -37,4 +56,10 @@ class App extends Component {
     }
 }
 
-export default connect(null, actions)(App);
+function mapStateToProps(state) {
+    return {
+        featuredMovies: state.featuredMovies
+    }
+}
+
+export default connect(mapStateToProps, actions)(App);

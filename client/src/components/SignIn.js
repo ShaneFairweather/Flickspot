@@ -7,9 +7,11 @@ const SignIn = () => {
     return (
         <div className="signin">
             <div className="container">
-                <a href="/auth/google"><GoogleLoginButton /></a>
-                <a href="/auth/facebook"><FacebookLoginButton /></a>
-                <a href="/auth/github"><GithubLoginButton /></a>
+                <div className="signin__button-container">
+                    <a href="/auth/google"><GoogleLoginButton className="signin__button" style={{maxWidth: '350px'}} /></a>
+                    <a href="/auth/facebook"><FacebookLoginButton className="signin__button" style={{maxWidth: '350px'}} /></a>
+                    <a href="/auth/github"><GithubLoginButton className="signin__button" style={{maxWidth: '350px'}} /></a>
+                </div>
             </div>
         </div>
     )

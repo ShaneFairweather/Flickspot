@@ -3,8 +3,15 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 class Header extends Component {
-    renderContent() {
+    state = { isOpen: false };
 
+    handleDropdownSelect = () => {
+        this.setState({
+            isOpen: !this.state.isOpen
+        });
+    };
+
+    renderContent() {
         switch (this.props.auth) {
             case null:
                 return;
@@ -18,6 +25,7 @@ class Header extends Component {
                 );
             default:
                 const { username, imageURL } = this.props.auth;
+                const dropdownStatus = this.state.isOpen ? "open" : "";
                 return (
                     <nav className="user-nav">
                         <div className="user-nav__icon-box">
@@ -27,11 +35,18 @@ class Header extends Component {
                             <i className="fa fa-list user-nav__icon"/>
                         </div>
                         <div className="user-nav__icon-box">
-                            <div className="user-nav__profile">
+                            <div
+                                onClick={this.handleDropdownSelect}
+                                className="user-nav__profile">
                                 <img src={imageURL} alt="User icon" />
                             </div>
-                            {/*<span>{username}</span>*/}
                         </div>
+                        <ul className={"user-nav__dropdown " + dropdownStatus}>
+                            <li className="user-nav__dropdown__item user-nav__dropdown__item--header">{username}</li>
+                            <li><a className="user-nav__dropdown__item">Lists</a></li>
+                            <li><a className="user-nav__dropdown__item">Edit Profile</a></li>
+                            <li><a className="user-nav__dropdown__item user-nav__dropdown__item--footer" href="/api/logout">Logout</a></li>
+                        </ul>
                     </nav>
                 )
         }
@@ -40,8 +55,9 @@ class Header extends Component {
     render() {
         return (
             <header className="header">
-                <div className="container container--header">
-                    <img src="../assets/img/logo.png" alt="flickspot logo" className="header__logo"/>
+                <div className="container container--navbar">
+                    {/*<img src="../assets/img/logo.png" alt="flickspot logo" className="header__logo"/>*/}
+                    <Link to="/">Flickspot</Link>
                     {this.renderContent()}
                 </div>
             </header>
@@ -50,7 +66,6 @@ class Header extends Component {
 };
 
 function mapStateToProps({ auth }) {
-    console.log({ auth });
     return { auth }
 }
 

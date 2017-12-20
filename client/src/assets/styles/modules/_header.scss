@@ -1,6 +1,6 @@
 .header {
   height: 6rem;
-  background-color: $gray-1;
+  background-color: $dark-3;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -13,6 +13,7 @@
   justify-content: flex-end;
   align-items: center;
   align-self: stretch;
+  color: white;
   & > * {
     padding: 0 2rem;
     cursor: pointer;
@@ -20,11 +21,11 @@
     display: flex;
     align-items: center;
     &:hover {
-      background-color: $gray-3;
+      //background-color: $gray-3;
     }
   }
   &__icon-box {
-
+    //color: white;
   }
   &__icon {
     height: 2.25rem;
@@ -33,6 +34,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    //color: inherit;
   }
   &__profile {
     //display: flex;
@@ -42,5 +44,53 @@
       max-height: 30px;
     }
   }
+  &__dropdown {
+    position: absolute;
+    top: 6rem;
+    //left: 2rem;
+    background-color: $dark-1;
+    list-style: none;
+    //display: flex;
+    //flex-direction: column;
+    height: auto;
+    //justify-content: flex-start;
+    //align-items: flex-start;
+    border-radius: 6px;
+    padding-left: 0;
+    padding-right: 0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    display: none;
+    &__item {
+      padding: 10px 25px;
+      text-align: left;
+      display: flex;
+      align-self: stretch;
+      width: 150px;
+      text-decoration: none;
+      color: white;
+      &:hover {
+        text-decoration: none;
+        color: white;
+        background-color: black;
+      }
+      &--header {
+        padding-bottom: 10px;
+        border-bottom: 1px solid #000000;
+        &:hover {
+          border-radius: 6px 6px 0 0;
+        }
+      }
+      &--footer {
+        border-top: 1px solid #000000;
+        padding-bottom: 10px;
+        &:hover {
+          border-radius: 0 0 6px 6px;
+        }
+      }
+    }
+  }
 }
 
+.open {
+  display: block;
+}

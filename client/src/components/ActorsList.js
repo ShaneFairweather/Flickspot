@@ -11,6 +11,7 @@ const ActorsList = ({actors}) => {
     return (
         <div className="actors-section">
             <div className="container container--main">
+                <h2 className="container__header">Cast</h2>
                 <div className="actors-list">
                     {renderActorsList()}
                 </div>

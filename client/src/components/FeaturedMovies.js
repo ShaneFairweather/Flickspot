@@ -14,12 +14,14 @@ const FeaturedMovies = ({ movies }) => {
     };
 
     return (
-        <div className="container">
-            <h2 className="container__header">Featured Movies</h2>
-            <div className="featured-movies">
-                <ul className="featured-movies__list">
-                    {renderFeaturedMoviesList()}
-                </ul>
+        <div className="featured-movies-container">
+            <div className="container">
+                <h2 className="container__header">Featured Movies</h2>
+                <div className="featured-movies">
+                    <ul className="featured-movies__list">
+                        {renderFeaturedMoviesList()}
+                    </ul>
+                </div>
             </div>
         </div>
     )

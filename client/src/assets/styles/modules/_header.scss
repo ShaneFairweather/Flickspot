@@ -5,6 +5,22 @@
   justify-content: space-between;
   align-items: center;
   font-size: 1.4rem;
+  &__brand, &__brand > a {
+    display: flex;
+    align-items: center;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  &__logo {
+    max-height: 60px;
+  }
+  &__title {
+    text-transform: uppercase;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 3px;
+  }
 }
 
 .user-nav {
@@ -25,7 +41,18 @@
     }
   }
   &__icon-box {
-    //color: white;
+    a {
+      color: white;
+      &:hover {
+        text-decoration: none;
+        color: $main;
+        //border: 2px solid $main;
+        transition: .2s ease-in-out;
+      }
+    }
+  }
+  &__icon-box:last-of-type {
+    padding-right: 0;
   }
   &__icon {
     height: 2.25rem;
@@ -35,6 +62,12 @@
     align-items: center;
     justify-content: center;
     //color: inherit;
+    &:hover {
+      text-decoration: none;
+      color: $main;
+      //border: 2px solid $main;
+      transition: .2s ease-in-out;
+    }
   }
   &__profile {
     //display: flex;

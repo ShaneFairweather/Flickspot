@@ -33,7 +33,7 @@ class ShowMovie extends Component {
         if(movie) {
             return (
                 <div>
-                    <div className="movie-details" style={{backgroundImage: `linear-gradient(to right bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url("http://image.tmdb.org/t/p/w780//${movie.backdrop_path}")`, backgroundSize: 'cover'}}>
+                    <div className="movie-details" style={{backgroundImage: `linear-gradient(to right bottom, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url("http://image.tmdb.org/t/p/w780//${movie.backdrop_path}")`, backgroundSize: 'cover'}}>
                         <div className="movie-details__banner" style={{backgroundImage: `url("http://image.tmdb.org/t/p/w500//${movie.backdrop_path}")`}}>
                             {/*<img src={"http://image.tmdb.org/t/p/w500//" + movie.backdrop_path} alt="poster" />*/}
                         </div>

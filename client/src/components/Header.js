@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Logo from '../assets/images/fslogo.png';
 
 class Header extends Component {
     state = { isOpen: false };
@@ -10,6 +11,18 @@ class Header extends Component {
             isOpen: !this.state.isOpen
         });
     };
+
+    componentWillMount() {
+        document.addEventListener('click', this.handleClick, false);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('click', this.handleClick, false);
+    }
+
+    handleClick = e => {
+        this.setState({ isOpen: false })
+    }
 
     renderContent() {
         switch (this.props.auth) {
@@ -56,8 +69,12 @@ class Header extends Component {
         return (
             <header className="header">
                 <div className="container container--navbar">
-                    {/*<img src="../assets/img/logo.png" alt="flickspot logo" className="header__logo"/>*/}
-                    <Link to="/">Flickspot</Link>
+                    <div className="header__brand">
+                        <Link to="/">
+                            <img src={Logo} alt="flickspot logo" className="header__logo"/>
+                            <div className="header__title">Flickspot</div>
+                        </Link>
+                    </div>
                     {this.renderContent()}
                 </div>
             </header>

@@ -9,25 +9,57 @@
 
 html {
   box-sizing: border-box;
-  font-size: 62.5%; }
+  font-size: 62.5%;
+  height: 100%; }
 
 body {
   font-family: "Open Sans", sans-serif;
   font-weight: 100;
   line-height: 1.6;
-  min-height: 100vh;
+  min-height: 100%;
   color: #ffffff;
-  background-color: #121212 !important; }
+  background-color: #121212 !important;
+  display: flex;
+  flex-direction: column; }
+
+.content {
+  flex: 1 0 auto; }
 
 .container--main {
-  padding: 4rem 0; }
+  padding: 3rem 0; }
+  @media only screen and (min-width: 520px) {
+    .container--main {
+      padding: 6rem 0; } }
 .container--navbar {
   display: flex;
   justify-content: space-between;
   height: 100%; }
 .container__header {
   color: white;
-  font-size: 3.4rem; }
+  font-size: 2.4rem; }
+  @media only screen and (min-width: 520px) {
+    .container__header {
+      font-size: 3.4rem; } }
+
+.open {
+  display: block !important; }
+
+*::-webkit-scrollbar {
+  width: 1em;
+  height: 1em; }
+
+*::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(234, 234, 234, 0.3); }
+
+*::-webkit-scrollbar-thumb {
+  background-color: #3e3e3e;
+  outline: 1px solid slategrey; }
+
+::-webkit-scrollbar:horizontal {
+  width: 1rem; }
+
+::-webkit-scrollbar-thumb:horizontal {
+  width: 1rem; }
 
 .header {
   height: 6rem;
@@ -96,35 +128,36 @@ body {
         .user-nav__dropdown__item--footer:hover {
           border-radius: 0 0 6px 6px; }
 
-.open {
-  display: block; }
-
-.searchbar-container {
-  padding: 1.8rem 2rem;
-  background-color: gray; }
+@media only screen and (min-width: 520px) {
+  .searchbar-container {
+    padding: 1.8rem 2rem;
+    background-color: gray;
+    max-height: 6rem; } }
 
 .searchbar {
-  flex: 0 0 40%;
   display: flex;
-  align-items: center;
-  justify-content: center;
   color: #999999;
   font-weight: 100; }
+  @media only screen and (min-width: 768px) {
+    .searchbar {
+      flex: 0 0 40%;
+      align-items: center;
+      justify-content: center; } }
   .searchbar__input {
     font-family: inherit;
-    font-size: inherit;
+    font-size: 1.2rem;
     color: #757575;
     background-color: #e4e2e2;
     border: none;
     padding: .7rem 2rem;
-    border-radius: 100px;
     transition: all .2s;
     margin-right: -3.25rem;
     font-weight: 100;
-    width: 90%; }
+    width: 100%; }
     @media only screen and (min-width: 520px) {
       .searchbar__input {
-        width: 50%; } }
+        width: 50%;
+        border-radius: 100px; } }
     .searchbar__input:focus {
       outline: none;
       background-color: #e4e2e2;
@@ -151,10 +184,45 @@ body {
     color: #777675;
     font-size: 1.4rem; }
 
+.searchbar-results {
+  background-color: #22252b;
+  width: 100%;
+  margin: 0 auto;
+  max-height: 400px;
+  overflow-y: scroll;
+  z-index: 10000;
+  display: none;
+  position: absolute; }
+  @media only screen and (min-width: 520px) {
+    .searchbar-results {
+      width: 650px;
+      position: relative; } }
+  .searchbar-results a {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-self: stretch;
+    text-decoration: none;
+    color: white; }
+    .searchbar-results a:hover {
+      text-decoration: none;
+      color: white; }
+
 .searchbar-result {
-  display: flex; }
+  display: flex;
+  border-bottom: 1px solid gray; }
   .searchbar-result__image img {
-    max-height: 100px; }
+    height: 100px;
+    width: 66.6px; }
+  .searchbar-result__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: 10px;
+    padding-left: 20px; }
+  .searchbar-result__title {
+    font-size: 1.8rem; }
 
 .sidebar {
   display: flex;
@@ -166,16 +234,88 @@ body {
 
 .featured-movies__list {
   display: flex;
-  overflow-x: scroll; }
-  .featured-movies__list li {
-    padding: 20px 20px 20px 0; }
+  flex-wrap: wrap;
+  justify-content: center; }
+  @media only screen and (min-width: 520px) {
+    .featured-movies__list {
+      justify-content: space-around; } }
+  @media only screen and (min-width: 768px) {
+    .featured-movies__list {
+      justify-content: space-between; } }
 
 .movie-card img {
-  max-height: 350px; }
+  padding-top: 10px;
+  width: 100%; }
+  @media only screen and (min-width: 480px) {
+    .movie-card img {
+      max-height: 300px;
+      width: auto;
+      padding: 10px 10px 0 0; } }
+  @media only screen and (min-width: 520px) {
+    .movie-card img {
+      max-height: 330px;
+      padding: 10px 0 0; } }
+  @media only screen and (min-width: 768px) {
+    .movie-card img {
+      max-height: 320px;
+      padding: 10px 0; } }
 
 .movie-details {
   color: white;
-  display: flex; }
+  display: flex;
+  flex-wrap: wrap; }
+  @media only screen and (max-width: 519px) {
+    .movie-details {
+      background-image: none !important; } }
+  @media only screen and (min-width: 768px) {
+    .movie-details {
+      flex-wrap: nowrap; } }
+  .movie-details__container {
+    display: none; }
+    @media only screen and (min-width: 768px) {
+      .movie-details__container {
+        display: flex; } }
+    @media only screen and (min-width: 768px) {
+      .movie-details__container--mobile {
+        display: none; } }
+    .movie-details__container--mobile .movie-details__image {
+      position: relative; }
+      .movie-details__container--mobile .movie-details__image img {
+        max-width: 150px; }
+        @media only screen and (min-width: 400px) {
+          .movie-details__container--mobile .movie-details__image img {
+            max-width: 160px; } }
+        @media only screen and (min-width: 480px) {
+          .movie-details__container--mobile .movie-details__image img {
+            max-width: 180px; } }
+        @media only screen and (min-width: 520px) {
+          .movie-details__container--mobile .movie-details__image img {
+            max-width: 200px; } }
+    .movie-details__container--mobile .movie-details__header {
+      display: flex;
+      flex-direction: row;
+      padding-top: 20px;
+      align-items: center;
+      padding-bottom: 20px;
+      justify-content: space-evenly; }
+      .movie-details__container--mobile .movie-details__header__content {
+        padding-left: 15px; }
+      .movie-details__container--mobile .movie-details__header__title {
+        font-size: 2.3rem; }
+        @media only screen and (min-width: 480px) {
+          .movie-details__container--mobile .movie-details__header__title {
+            font-size: 3rem; } }
+      .movie-details__container--mobile .movie-details__header__year {
+        color: #999999;
+        font-weight: 300;
+        font-size: 2.0rem; }
+  .movie-details__banner {
+    width: 100%;
+    height: 200px;
+    background-size: cover; }
+    @media only screen and (min-width: 520px) {
+      .movie-details__banner {
+        display: none; } }
   .movie-details__image img {
     max-height: 450px; }
   .movie-details__content {
@@ -186,10 +326,75 @@ body {
     padding: 0 4rem; }
   .movie-details__overview {
     font-size: 1.7rem;
-    padding-top: 1rem; }
+    padding-top: 1rem;
+    font-weight: 100; }
   .movie-details__year {
     color: #999999;
     font-weight: 300;
     font-size: 2.7rem; }
+  .movie-details__icon-row {
+    list-style: none;
+    display: flex; }
+  .movie-details__icon-box {
+    border: 2px solid white;
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 2rem 0 0;
+    cursor: pointer;
+    align-self: stretch;
+    text-decoration: none;
+    color: white; }
+    .movie-details__icon-box:hover {
+      text-decoration: none;
+      color: #805be7;
+      border: 2px solid #805be7;
+      transition: .2s ease-in-out; }
+  .movie-details__icon {
+    font-size: 1.7rem; }
+
+.actors-section {
+  background-color: #22252b; }
+
+.actors-list {
+  display: flex;
+  overflow-x: auto;
+  padding: 1px; }
+
+.actor-card {
+  margin: 10px 15px 10px 1px;
+  box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.32);
+  background-color: #22252b;
+  color: white; }
+  .actor-card__image img {
+    max-height: 200px;
+    max-width: 133.33px;
+    height: 200px;
+    width: 133.33px; }
+  .actor-card__content {
+    padding: 10px; }
+  .actor-card__name {
+    font-size: 1.5rem;
+    font-weight: 500; }
+  .actor-card__character {
+    font-size: 1.1rem;
+    font-weight: 100; }
+
+.footer {
+  background-color: #061217;
+  color: white;
+  margin-top: auto;
+  justify-content: center;
+  align-items: center; }
+  .footer .container {
+    display: flex;
+    justify-content: center;
+    padding: 10px; }
+  .footer__text {
+    font-size: 1.4rem;
+    font-weight: 100; }
 
 /*# sourceMappingURL=styles.css.map */

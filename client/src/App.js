@@ -11,6 +11,7 @@ import Searchbar from './components/Searchbar';
 import Home from './components/Home';
 import ShowMovie from './components/ShowMovie';
 import SignIn from './components/SignIn';
+import Footer from './components/Footer';
 
 
 class App extends Component {
@@ -25,30 +26,33 @@ class App extends Component {
                 <BrowserRouter>
                     <div>
                         <Header />
-                        <Searchbar />
-                        <Route
-                            exact
-                            path="/"
-                            render={(props) => (
-                                <Home
-                                    {...props}
-                                    featuredMovies={this.props.featuredMovies}
-                                />)}
-                        />
-                        <Route
-                            exact
-                            path="/movies/:id"
-                            component={ShowMovie}
-                        />
-                        <Route
-                            exact
-                            path="/signin"
-                            render={(props) => (
-                                <SignIn
-                                    {...props}
-                                    user={this.props.user}
-                                />)}
-                        />
+                        <div className="content">
+                            <Searchbar />
+                            <Route
+                                exact
+                                path="/"
+                                render={(props) => (
+                                    <Home
+                                        {...props}
+                                        featuredMovies={this.props.featuredMovies}
+                                    />)}
+                            />
+                            <Route
+                                exact
+                                path="/movies/:id"
+                                component={ShowMovie}
+                            />
+                            <Route
+                                exact
+                                path="/signin"
+                                render={(props) => (
+                                    <SignIn
+                                        {...props}
+                                        user={this.props.user}
+                                    />)}
+                            />
+                        </div>
+                        <Footer />
                     </div>
                 </BrowserRouter>
             </div>

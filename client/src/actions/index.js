@@ -21,13 +21,13 @@ export const fetchFeaturedMovies = () =>
 
 export const fetchMovieById = (id) =>
     async dispatch => {
-        const res = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${keys.tmdbKey}`);
+        const res = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${keys.tmdbKey}&append_to_response=videos,credits`);
         dispatch({type: FETCH_MOVIE_BY_ID, payload: res.data });
     };
 
 export const fetchSearchResults = (query) =>
     // let fixedQuery = query.replace(/ /g,"%20");
     async dispatch => {
-        const res = await axios.get(`https://api.themoviedb.org/3/search/multi?api_key=${keys.tmdbKey}&language=en-US&query=${query.replace(/ /g, "%20")}&page=1&include_adult=false`);
+        const res = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${keys.tmdbKey}&language=en-US&query=${query.replace(/ /g, "%20")}&append_to_response=credits&page=1&include_adult=false`);
         dispatch({type: FETCH_SEARCH_RESULTS, payload: res.data });
     };

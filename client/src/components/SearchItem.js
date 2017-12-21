@@ -1,21 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import posterPic from '../assets/images/default_poster.jpg';
 
 const SearchResult = (props) => {
     const { movie } = props;
+    const renderProfileImage = () => {
+        if(movie.poster_path === null) {
+            return <img src={posterPic} alt="Search result poster"/>
+        } else {
+            return <img src={"http://image.tmdb.org/t/p/w154//" + movie.poster_path} alt="Search result poster"/>
+        }
+    };
+
     return (
         <li className="searchbar-result">
-            <div className="container">
-                <Link to={`/movies/${movie.id}`}>
-                    <div className="searchbar-result__image">
-                        <img src={"http://image.tmdb.org/t/p/w154//" + movie.poster_path} />
-                    </div>
-                    <div className="searchbar-result__content">
-                        <div className="searchbar-result__title">{movie.name}</div>
-                    </div>
-                </Link>
-            </div>
+            <Link to={`/movies/${movie.id}`}>
+            {/*<Link to="/">*/}
+                <div className="searchbar-result__image">
+                    {renderProfileImage()}
+                </div>
+                <div className="searchbar-result__content">
+                    <div className="searchbar-result__title">{movie.original_title}</div>
+                    <div className="searchbar-result__overview">{movie.overview.slice(0, 280) + '...'}</div>
+                </div>
+            </Link>
         </li>
+
     )
 };
 

@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import MovieCard from './MovieCard';
 
 const FeaturedMovies = ({ movies }) => {
     const renderFeaturedMoviesList = () => {
         if(movies) {
             console.log(movies);
-            return movies.results.map((movie) => {
+            return movies.results.slice(0, 10).map((movie) => {
                 return (
-                    <MovieCard id={movie.id} movie={movie} />
+                        <MovieCard id={movie.id} movie={movie} />
                 )
             });
         }
@@ -19,7 +19,7 @@ const FeaturedMovies = ({ movies }) => {
             <div className="featured-movies">
                 <ul className="featured-movies__list">
                     {renderFeaturedMoviesList()}
-                    </ul>
+                </ul>
             </div>
         </div>
     )

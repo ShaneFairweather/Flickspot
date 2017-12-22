@@ -42,7 +42,9 @@ class Header extends Component {
                 return (
                     <nav className="user-nav">
                         <div className="user-nav__icon-box">
-                            <i className="fa fa-plus user-nav__icon"/>
+                            <Link to="/create-list">
+                                <i className="fa fa-plus user-nav__icon"/>
+                            </Link>
                         </div>
                         <div className="user-nav__icon-box">
                             <i className="fa fa-list user-nav__icon"/>

@@ -11,6 +11,7 @@ import Searchbar from './components/Searchbar';
 import Home from './components/Home';
 import ShowMovie from './components/ShowMovie';
 import SignIn from './components/SignIn';
+import CreateList from './components/CreateList';
 import Footer from './components/Footer';
 
 
@@ -41,6 +42,10 @@ class App extends Component {
                                 exact
                                 path="/movies/:id"
                                 component={ShowMovie}
+                            />
+                            <Route
+                                path="/create-list"
+                                component={CreateList}
                             />
                             <Route
                                 exact

@@ -30,18 +30,22 @@ class Searchbar extends Component {
         this.props.fetchSearchResults(this.state.queryString);
     }
 
+    resetSearch = () => {
+        this.setState({ queryString: '' });
+    }
+
     renderSearchResults() {
         if(this.props.queryResults) {
             return (
                 this.props.queryResults.results.map((movie) => {
-                    return <SearchItem key={movie.id} movie={movie} />
+                    return <SearchItem
+                        key={movie.id}
+                        movie={movie}
+                        resetSearch={this.resetSearch}
+                    />
                 })
             )
         }
-    }
-
-    resetSearch() {
-        this.setState({ queryString: '' });
     }
 
     render() {

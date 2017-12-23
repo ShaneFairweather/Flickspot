@@ -7,9 +7,14 @@
   box-sizing: inherit;
 }
 
-//html, body {
-//  height: 100%;
-//}
+html, body, #root, .app, .app__body {
+  height: 100%;
+}
+
+.app__body {
+  display: flex;
+  flex-direction: column;
+}
 
 html {
   box-sizing: border-box;
@@ -18,7 +23,6 @@ html {
 }
 
 body {
-  font-family: $font-stack;
   font-weight: 100;
   line-height: 1.6;
   min-height: 100%;
@@ -26,6 +30,7 @@ body {
   background-color: #121212 !important;
   display: flex;
   flex-direction: column;
+  font-family: $font-stack;
 }
 
 .content {

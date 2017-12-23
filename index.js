@@ -1,10 +1,12 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
-require('./models/User');
-require('./services/passport');
 const keys = require('./config/keys');
+require('./models/User');
+require('./models/List');
+require('./services/passport');
 
 mongoose.connect(keys.mongoURI, {
     useMongoClient: true
@@ -20,10 +22,13 @@ app.use(
     })
 );
 
+app.use(bodyParser.json({ type: '*/*' }));
+
 app.use(passport.initialize());
 app.use(passport.session());
 
 require('./routes/authRoutes')(app);
+require('./routes/listRoutes')(app);
 
 
 

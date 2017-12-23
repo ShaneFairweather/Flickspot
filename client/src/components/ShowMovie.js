@@ -10,9 +10,11 @@ class ShowMovie extends Component {
         this.props.fetchMovieById(id);
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps, prevState) {
         const id = this.props.match.params.id;
-        this.props.fetchMovieById(id);
+        if(this.props.match.params.id !== prevProps.match.params.id) {
+            this.props.fetchMovieById(id);
+        }
     }
 
     renderTrailer() {
@@ -73,7 +75,7 @@ class ShowMovie extends Component {
                                     {/*<div className="movie-details__score">{movie.vote_average}</div>*/}
                                     <ReactStars
                                         count={5}
-                                        size={24}
+                                        size={28}
                                         color2={'#805be7'}
                                         value={movie.vote_average / 2}
                                         edit={false}

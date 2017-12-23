@@ -13,14 +13,14 @@ const SearchResult = (props) => {
     };
 
     return (
-        <li className="searchbar-result">
+        <li className="searchbar-result" onClick={props.resetSearch}>
             <Link to={`/movies/${movie.id}`}>
             {/*<Link to="/">*/}
                 <div className="searchbar-result__image">
                     {renderProfileImage()}
                 </div>
                 <div className="searchbar-result__content">
-                    <div className="searchbar-result__title">{movie.original_title}</div>
+                    <div className="searchbar-result__title">{movie.original_title} <span className="searchbar-result__year">({movie.release_date.slice(0, 4)})</span></div>
                     <div className="searchbar-result__overview">{movie.overview.slice(0, 280) + '...'}</div>
                 </div>
             </Link>

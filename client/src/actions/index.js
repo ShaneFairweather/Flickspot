@@ -3,7 +3,8 @@ import {
     FETCH_FEATURED_MOVIES,
     FETCH_USER,
     FETCH_MOVIE_BY_ID,
-    FETCH_SEARCH_RESULTS
+    FETCH_SEARCH_RESULTS,
+    CREATE_LIST
 } from "./actionTypes";
 import keys from '../config/keys';
 
@@ -31,3 +32,10 @@ export const fetchSearchResults = (query) =>
         const res = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${keys.tmdbKey}&language=en-US&query=${query.replace(/ /g, "%20")}&append_to_response=credits&page=1&include_adult=false`);
         dispatch({type: FETCH_SEARCH_RESULTS, payload: res.data });
     };
+
+export const createList = (title) =>
+    async dispatch => {
+        const req = await axios.post('/api/create_list', {title});
+        dispatch({type: CREATE_LIST, payload: req });
+    };
+

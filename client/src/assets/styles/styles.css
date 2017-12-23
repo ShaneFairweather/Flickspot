@@ -7,20 +7,27 @@
 *, *::before, *::after {
   box-sizing: inherit; }
 
+html, body, #root, .app, .app__body {
+  height: 100%; }
+
+.app__body {
+  display: flex;
+  flex-direction: column; }
+
 html {
   box-sizing: border-box;
   font-size: 62.5%;
   height: 100%; }
 
 body {
-  font-family: "Open Sans", sans-serif;
   font-weight: 100;
   line-height: 1.6;
   min-height: 100%;
   color: #ffffff;
   background-color: #121212 !important;
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  font-family: "Open Sans", sans-serif; }
 
 .content {
   flex: 1 0 auto; }
@@ -247,6 +254,9 @@ body {
     padding-left: 20px; }
   .searchbar-result__title {
     font-size: 1.8rem; }
+  .searchbar-result__year {
+    color: gray;
+    font-size: 1.6rem; }
 
 .sidebar {
   display: flex;
@@ -299,40 +309,6 @@ body {
     @media only screen and (min-width: 768px) {
       .movie-details__container {
         display: flex; } }
-    @media only screen and (min-width: 768px) {
-      .movie-details__container--mobile {
-        display: none; } }
-    .movie-details__container--mobile .movie-details__image {
-      position: relative; }
-      .movie-details__container--mobile .movie-details__image img {
-        max-width: 150px; }
-        @media only screen and (min-width: 400px) {
-          .movie-details__container--mobile .movie-details__image img {
-            max-width: 160px; } }
-        @media only screen and (min-width: 480px) {
-          .movie-details__container--mobile .movie-details__image img {
-            max-width: 180px; } }
-        @media only screen and (min-width: 520px) {
-          .movie-details__container--mobile .movie-details__image img {
-            max-width: 200px; } }
-    .movie-details__container--mobile .movie-details__header {
-      display: flex;
-      flex-direction: row;
-      padding-top: 20px;
-      align-items: center;
-      padding-bottom: 20px;
-      justify-content: space-evenly; }
-      .movie-details__container--mobile .movie-details__header__content {
-        padding-left: 15px; }
-      .movie-details__container--mobile .movie-details__header__title {
-        font-size: 2.3rem; }
-        @media only screen and (min-width: 480px) {
-          .movie-details__container--mobile .movie-details__header__title {
-            font-size: 3rem; } }
-      .movie-details__container--mobile .movie-details__header__year {
-        color: #999999;
-        font-weight: 300;
-        font-size: 2.0rem; }
   .movie-details__banner {
     width: 100%;
     height: 200px;
@@ -379,6 +355,41 @@ body {
       transition: .2s ease-in-out; }
   .movie-details__icon {
     font-size: 1.7rem; }
+
+@media only screen and (min-width: 768px) {
+  .movie-details__container--mobile {
+    display: none; } }
+.movie-details__container--mobile .movie-details__image {
+  position: relative; }
+  .movie-details__container--mobile .movie-details__image img {
+    max-width: 130px; }
+    @media only screen and (min-width: 400px) {
+      .movie-details__container--mobile .movie-details__image img {
+        max-width: 140px; } }
+    @media only screen and (min-width: 480px) {
+      .movie-details__container--mobile .movie-details__image img {
+        max-width: 180px; } }
+    @media only screen and (min-width: 520px) {
+      .movie-details__container--mobile .movie-details__image img {
+        max-width: 200px; } }
+.movie-details__container--mobile .movie-details__header {
+  display: flex;
+  flex-direction: row;
+  padding-top: 20px;
+  align-items: center;
+  padding-bottom: 20px;
+  justify-content: space-evenly; }
+  .movie-details__container--mobile .movie-details__header__content {
+    padding-left: 15px; }
+  .movie-details__container--mobile .movie-details__header__title {
+    font-size: 2.3rem; }
+    @media only screen and (min-width: 480px) {
+      .movie-details__container--mobile .movie-details__header__title {
+        font-size: 3rem; } }
+  .movie-details__container--mobile .movie-details__header__year {
+    color: #999999;
+    font-weight: 300;
+    font-size: 2.0rem; }
 
 .actors-section {
   background-color: #22252b; }

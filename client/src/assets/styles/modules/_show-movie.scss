@@ -14,50 +14,6 @@
     @include screen('md') {
       display: flex;
     }
-    &--mobile {
-      @include screen('md') {
-        display: none;
-      }
-      .movie-details__image {
-        position: relative;
-        //top: -40px;
-        img {
-          max-width: 150px;
-          @include screen('xs') {
-            max-width: 160px;
-          }
-          @include screen('xs-wide') {
-            max-width: 180px;
-          }
-          @include screen('sm') {
-            max-width: 200px;
-
-          }
-        }
-      }
-      .movie-details__header {
-        display: flex;
-        flex-direction: row;
-        padding-top: 20px;
-        align-items: center;
-        padding-bottom: 20px;
-        justify-content: space-evenly;
-        &__content {
-          padding-left: 15px;
-        }
-        &__title {
-          font-size: 2.3rem;
-          @include screen('xs-wide') {
-            font-size: 3rem;
-          }
-        }
-        &__year {
-          color: $gray-3;
-          font-weight: 300;
-          font-size: 2.0rem;
-        }
-      }
-    }
   }
   &__banner {
     width: 100%;
@@ -122,5 +78,53 @@
   }
   &__icon {
     font-size: 1.7rem;
+  }
+}
+
+
+//=========Mobile version========//
+
+.movie-details__container--mobile {
+  @include screen('md') {
+    display: none;
+  }
+  .movie-details__image {
+    position: relative;
+    //top: -40px;
+    img {
+      max-width: 130px;
+      @include screen('xs') {
+        max-width: 140px;
+      }
+      @include screen('xs-wide') {
+        max-width: 180px;
+      }
+      @include screen('sm') {
+        max-width: 200px;
+
+      }
+    }
+  }
+  .movie-details__header {
+    display: flex;
+    flex-direction: row;
+    padding-top: 20px;
+    align-items: center;
+    padding-bottom: 20px;
+    justify-content: space-evenly;
+    &__content {
+      padding-left: 15px;
+    }
+    &__title {
+      font-size: 2.3rem;
+      @include screen('xs-wide') {
+        font-size: 3rem;
+      }
+    }
+    &__year {
+      color: $gray-3;
+      font-weight: 300;
+      font-size: 2.0rem;
+    }
   }
 }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './assets/styles/styles.css';
 import {FacebookLoginButton} from 'react-social-login-buttons';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -18,14 +17,15 @@ import Footer from './components/Footer';
 class App extends Component {
     componentDidMount() {
         this.props.fetchUser();
+        console.log('test');
         this.props.fetchFeaturedMovies();
     }
 
     render() {
         return (
-            <div className="App">
+            <div className="app">
                 <BrowserRouter>
-                    <div>
+                    <div class="app__body">
                         <Header />
                         <div className="content">
                             <Searchbar />

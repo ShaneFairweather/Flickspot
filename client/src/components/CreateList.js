@@ -18,8 +18,10 @@ class CreateList extends Component {
             <div className="create-list">
                 <div className="container container--main">
                     <form>
-                        <input />
-                        <input type="textarea"/>
+                        <label htmlFor="list-title">Title</label>
+                        <input id="list-title" />
+                        <label htmlFor="list-title">Description</label>
+                        <input id="list-description" type="textarea"/>
                         <button onClick={(e) => this.onSubmit(e)}>Click button</button>
                     </form>
                 </div>

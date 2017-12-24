@@ -2,12 +2,11 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const ListSchema = new Schema({
-    title: String,
+    title: {type: String, required: true},
     dateCreated: String,
-    author: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    },
+    description: String,
+    user: {type: Schema.ObjectId, ref: 'User', required: true}
+
 });
 
 mongoose.model('lists', ListSchema);

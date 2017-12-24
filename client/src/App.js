@@ -25,9 +25,9 @@ class App extends Component {
         return (
             <div className="app">
                 <BrowserRouter>
-                    <div class="app__body">
+                    <div className="app__body">
                         <Header />
-                        <div className="content">
+                        {/*<div className="content">*/}
                             <Searchbar />
                             <Route
                                 exact
@@ -56,7 +56,7 @@ class App extends Component {
                                         user={this.props.user}
                                     />)}
                             />
-                        </div>
+                        {/*</div>*/}
                         <Footer />
                     </div>
                 </BrowserRouter>

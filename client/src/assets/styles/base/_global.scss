@@ -7,14 +7,14 @@
   box-sizing: inherit;
 }
 
-html, body, #root, .app, .app__body {
+html, body {
   height: 100%;
 }
 
-.app__body {
-  display: flex;
-  flex-direction: column;
-}
+//.app__body {
+//  display: flex;
+//  flex-direction: column;
+//}
 
 html {
   box-sizing: border-box;

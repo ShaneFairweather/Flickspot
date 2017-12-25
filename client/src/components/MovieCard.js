@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import profilePic from '../assets/images/profile.png';
 
 const MovieCard = ({movie}) => {
     return (

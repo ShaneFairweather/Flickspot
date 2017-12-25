@@ -1,10 +1,20 @@
 .header {
   height: 6rem;
   background-color: $dark-3;
-  display: flex;
+  //display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 1.4rem;
+  border-bottom: 1px solid #3a3a3a;
+  //& > * {
+  //  border-left: 1px solid gray;
+  //}
+  &__brand {
+    padding-right: 20px;
+    @include screen('md') {
+      border-right: 1px solid #3a3a3a;
+    }
+  }
   &__brand, &__brand > a {
     display: flex;
     align-items: center;
@@ -20,6 +30,14 @@
     color: white;
     font-weight: bold;
     letter-spacing: 3px;
+  }
+  .searchbar-container {
+    //display: flex;
+    width: 100%;
+    @include screen('md', max) {
+      display: none;
+    }
+
   }
 }
 
@@ -41,6 +59,8 @@
     }
   }
   &__icon-box {
+    //border-left: .5px solid gray;
+    //border-right: .5px solid #3a3a3a;
     a {
       color: white;
       &:hover {
@@ -51,8 +71,11 @@
       }
     }
   }
-  &__icon-box:last-of-type {
-    padding-right: 0;
+  &__icon-box:first-of-type {
+    //padding-right: 0;
+    @include screen('md') {
+      border-left: .5px solid #3a3a3a;
+    }
   }
   &__icon {
     height: 2.25rem;
@@ -77,6 +100,9 @@
       max-height: 30px;
     }
   }
+  &__login {
+    cursor: pointer;
+  }
   &__dropdown {
     position: absolute;
     top: 6rem;
@@ -98,7 +124,7 @@
       text-align: left;
       display: flex;
       align-self: stretch;
-      width: 150px;
+      min-width: 150px;
       text-decoration: none;
       color: white;
       &:hover {
@@ -120,6 +146,10 @@
           border-radius: 0 0 6px 6px;
         }
       }
+    }
+    &--login {
+      width: 300px;
+      right: 0;
     }
   }
 }

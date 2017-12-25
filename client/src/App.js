@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import {FacebookLoginButton} from 'react-social-login-buttons';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from './actions';
@@ -27,7 +25,7 @@ class App extends Component {
                 <BrowserRouter>
                     <div className="app__body">
                         <Header />
-                        {/*<div className="content">*/}
+                        <div className="content">
                             <Searchbar />
                             <Route
                                 exact
@@ -56,7 +54,7 @@ class App extends Component {
                                         user={this.props.user}
                                     />)}
                             />
-                        {/*</div>*/}
+                        </div>
                         <Footer />
                     </div>
                 </BrowserRouter>

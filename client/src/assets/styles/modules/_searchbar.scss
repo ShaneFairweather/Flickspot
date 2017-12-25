@@ -1,20 +1,22 @@
 .searchbar-container {
-  @include screen('sm') {
-    padding: 1.5rem;
-    background-color: #404040;
-    max-height: 6rem;
-  }
+  //@include screen('sm') {
+  //  padding: 1.5rem;
+  //  background-color: #404040;
+  //  max-height: 6rem;
+  //}
 }
 
 .searchbar {
   display: flex;
   color: $gray-3;
   font-weight: 100;
-  @include screen('md') {
-    flex: 0 0 40%;
-    align-items: center;
-    justify-content: center;
-  }
+  width: 100%;
+  height: 100%;
+  //@include screen('md') {
+  //  flex: 0 0 40%;
+  //  align-items: center;
+  //  justify-content: center;
+  //}
   &__input {
     font-family: inherit;
     font-size: 1.2rem;
@@ -26,17 +28,19 @@
     margin-right: -3.25rem;
     font-weight: 100;
     width: 100%;
-    @include screen('sm') {
-      width: 50%;
-      border-radius: 100px;
+    //@include screen('sm') {
+    //  width: 100%;
+    //  border-radius: 100px;
+    //}
+    @include screen('md') {
+      background-color: $dark-3;
     }
     &:focus {
       outline: none;
       background-color: $gray-2;
-      width: 100%;
-      @include screen('sm') {
-        width: 56%;
-      }
+      //@include screen('sm') {
+      //  width: 56%;
+      //}
     }
 
     &::-webkit-input-placeholder {
@@ -51,14 +55,14 @@
 
   &__button {
     border: none;
-    background-color: $gray-2;
+    background-color: transparent;
+    //transition: all .1s;
+    @include screen('md') {
+      //background-color: $dark-3;
+    }
     &:focus {
       outline: none;
-      background-color: $gray-3;
-    }
-
-    &:active {
-      transform: translateY(2px);
+      //background-color: $gray-3;
     }
   }
   &__icon {
@@ -66,6 +70,10 @@
     align-items: center;
     color: #777675;
     font-size: 1.4rem;
+    @include screen('md') {
+      font-size: 1.7rem;
+      color: white;
+    }
   }
 }
 
@@ -85,9 +93,9 @@
   //transform: translate(-50%,-50%);
   display: none;
   position: absolute;
-  @include screen('sm') {
-    width: 650px;
+  @include screen('md') {
     position: relative;
+    //top: 60px;
   }
   a {
     display: flex;
@@ -105,8 +113,7 @@
 
 .searchbar-result {
   display: flex;
-  border-bottom: 1px solid gray;
-
+  border-bottom: 1px solid #505050;
   &__image {
     img {
       height: 100px;

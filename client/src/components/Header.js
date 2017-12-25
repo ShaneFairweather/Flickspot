@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Logo from '../assets/images/fslogo.png';
+import Searchbar from './Searchbar';
+import Signin from './SignIn';
+import SocialButton from './SocialButton';
 
 class Header extends Component {
     state = { isOpen: false };
@@ -10,6 +13,7 @@ class Header extends Component {
         this.setState({
             isOpen: !this.state.isOpen
         });
+        console.log(this.state.isOpen)
     };
 
     componentWillMount() {
@@ -20,7 +24,7 @@ class Header extends Component {
         document.removeEventListener('click', this.handleClick, false);
     }
 
-    handleClick = e => {
+    handleClick = () => {
         this.setState({ isOpen: false })
     }
 
@@ -29,11 +33,19 @@ class Header extends Component {
             case null:
                 return;
             case false:
+                const loginDropdownStatus = this.state.isOpen ? "open" : "";
                 return (
                     <nav className="user-nav">
                         <div className="user-nav__icon-box">
-                            <Link to="/signin">Login</Link>
+                            <span
+                                onClick={this.handleDropdownSelect}
+                                className="user-nav__login">Login</span>
                         </div>
+                        <ul className={"user-nav__dropdown user-nav__dropdown--login " + loginDropdownStatus}>
+                            <li><SocialButton brand="google" icon="google" color="#cb3f23"/></li>
+                            <li><SocialButton brand="facebook" icon="facebook-official" color="#3c5898"/></li>
+                            <li><SocialButton brand="github" icon="github" color="#333333"/></li>
+                        </ul>
                     </nav>
                 );
             default:
@@ -77,7 +89,10 @@ class Header extends Component {
                             <div className="header__title">Flickspot</div>
                         </Link>
                     </div>
+                    <Searchbar />
                     {this.renderContent()}
+                </div>
+                <div className="sidebar">
                 </div>
             </header>
         )

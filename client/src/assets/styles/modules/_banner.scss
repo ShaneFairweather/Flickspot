@@ -1,0 +1,43 @@
+.banner {
+  color: white;
+  background-size: cover;
+  //background-position: center;
+  background-position-y: 18%;
+  font-family: $font-stack;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  //,container--main {
+  //  padding-top: 5rem;
+  //  padding-bottom: 5rem;
+  //}
+  &__header {
+    font-size: 1.6rem;
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    & > * {
+      padding-top: 1rem;
+    }
+  }
+  &__title {
+    font-size: 3.1rem;
+  }
+  &__overview {
+    font-size: 1.6rem;
+    font-weight: 100;
+    @include screen('md') {
+      max-width: 50%;
+    }
+  }
+}

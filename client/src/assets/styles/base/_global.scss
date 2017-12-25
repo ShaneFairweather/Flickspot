@@ -7,14 +7,14 @@
   box-sizing: inherit;
 }
 
-html, body {
+html, body, #root, .app, .app__body {
   height: 100%;
 }
 
-//.app__body {
-//  display: flex;
-//  flex-direction: column;
-//}
+.app__body {
+  display: flex;
+  flex-direction: column;
+}
 
 html {
   box-sizing: border-box;
@@ -35,6 +35,11 @@ body {
 
 .content {
   flex: 1 0 auto;
+  .searchbar-container {
+    @include screen('md') {
+      display: none;
+    }
+  }
 }
 
 .container {
@@ -52,6 +57,7 @@ body {
   &__header {
     color: white;
     font-size: 2.4rem;
+    font-weight: 300;
     @include screen('sm') {
       font-size: 3.4rem;
     }
@@ -62,8 +68,11 @@ body {
   display: block !important;
 }
 
-section {
-
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none !important;
+  }
 }
 
 

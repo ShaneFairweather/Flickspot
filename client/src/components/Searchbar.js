@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import SearchItem from './SearchItem';
@@ -26,8 +25,12 @@ class Searchbar extends Component {
         this.setState({
             queryString: e.target.value,
             resultsVisible: true
+        }, () => {
+            this.props.fetchSearchResults(this.state.queryString);
+            if(this.state.queryString === '') {
+                this.setState({resultsVisible: false})
+            }
         });
-        this.props.fetchSearchResults(this.state.queryString);
     }
 
     resetSearch = () => {
@@ -60,9 +63,9 @@ class Searchbar extends Component {
                         value={this.state.queryString}
                         onChange={e => this.onSearchChange(e)}
                     />
-                    <button className="searchbar__button">
+                    {/*<button className="searchbar__button">*/}
                         <i className="fa fa-search searchbar__icon" aria-hidden="true"/>
-                    </button>
+                    {/*</button>*/}
                 </form>
                 <div className={"searchbar-results " + resultsVisible}>
                     <ul>{this.renderSearchResults()}</ul>

@@ -5,9 +5,9 @@ const FeaturedMovies = ({ movies }) => {
     const renderFeaturedMoviesList = () => {
         if(movies) {
             console.log(movies);
-            return movies.results.slice(0, 10).map((movie) => {
+            return movies.results.slice(1, 11).map((movie) => {
                 return (
-                        <MovieCard id={movie.id} movie={movie} />
+                        <MovieCard key={movie.id} movie={movie} />
                 )
             });
         }
@@ -16,7 +16,7 @@ const FeaturedMovies = ({ movies }) => {
     return (
         <div className="featured-movies-container">
             <div className="container">
-                <h2 className="container__header">Featured Movies</h2>
+                <h2 className="container__header">Now Playing</h2>
                 <div className="featured-movies">
                     <ul className="featured-movies__list">
                         {renderFeaturedMoviesList()}

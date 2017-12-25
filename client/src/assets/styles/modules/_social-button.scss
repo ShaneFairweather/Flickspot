@@ -1,0 +1,35 @@
+.social-button {
+  color: white;
+  border-radius: 2px;
+  box-shadow: rgb(35, 35, 35) 0px 1px 2px;
+  margin: 5px;
+  cursor: pointer;
+  a {
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    color: white;
+    align-items: center;
+    &:hover {
+      text-decoration: none;
+      color: white;
+    }
+  }
+  &__icon {
+    padding-right: 10px;
+    float: left;
+    //height: 50px;
+    line-height: 50px;
+    display: flex;
+    align-items: center;
+    i {
+      font-size: 26px;
+    }
+  }
+  &__text {
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+  }
+}

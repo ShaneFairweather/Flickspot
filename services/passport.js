@@ -31,6 +31,7 @@ passport.use(
         const image = profile._json.image.url;
         console.log(profile);
         const existingUser = await User.findOne({ profileID: profile.id });
+        console.log(existingUser);
         if(existingUser) {
             return done(null, existingUser);
         }
@@ -46,8 +47,7 @@ passport.use(
 
 
 passport.use(
-    new FacebookStrategy(
-        {
+    new FacebookStrategy({
             clientID: keys.facebookClientID,
             clientSecret: keys.facebookClientSecret,
             callbackURL: '/auth/facebook/callback',
@@ -56,7 +56,7 @@ passport.use(
         },
         async (accessToken, refreshToken, profile, done) => {
             console.log(profile);
-            const existingUser = await User.findOne({profileId: profile.id});
+            const existingUser = await User.findOne({ profileID: profile.id });
             if(existingUser) {
                 return done(null, existingUser);
             }
@@ -73,8 +73,7 @@ passport.use(
 
 
 passport.use(
-    new GithubStrategy(
-        {
+    new GithubStrategy({
             clientID: keys.githubClientID,
             clientSecret: keys.githubClientSecret,
             callbackURL: '/auth/github/callback',
@@ -83,7 +82,7 @@ passport.use(
         },
         async (accessToken, refreshToken, profile, done) => {
             console.log(profile);
-            const existingUser = await User.findOne({profileId: profile.id});
+            const existingUser = await User.findOne({profileID: profile.id});
             if(existingUser) {
                 return done(null, existingUser);
             }

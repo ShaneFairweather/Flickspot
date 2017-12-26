@@ -1,0 +1,26 @@
+.list-card {
+  color: white;
+  box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.32);
+  background-color: #435480;
+  //padding: 3rem 8rem;
+  max-width: 400px;
+  width: 500px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: 100;
+  margin-top: 20px;
+  margin-right: 20px;
+  &__title {
+    font-size: 2.6rem;
+  }
+  &__item-count {
+    font-weight: 100;
+  }
+  &__date-created {
+    color: #8c8c8c;
+    font-weight: 200;
+  }
+}

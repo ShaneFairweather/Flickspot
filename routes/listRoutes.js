@@ -17,12 +17,16 @@ module.exports = app => {
     });
 
 
-    app.post('/api/add_movie', (req, res, next) => {
+    app.post('/api/add_movie', async (req, res, next) => {
         // const list = req.body.listID;
-        const getListID = List.findOne({title: "A Different List"}).exec();
-        getListID.then(function(list) {
-                    console.log(list._id);
-                });
+        const existingList = await List.findOne({ title: "The Big List" });
+        console.log(existingList);
+        // const getListID = List.findOne({title: "A Different List"}).exec();
+        // getListID.then(function(list) {
+        //             // function() {
+        //             //     return list._id;
+        //             // }
+        //         });
 
         // getListID('John')
         //     .then(function(city) {
@@ -32,7 +36,25 @@ module.exports = app => {
             title: 'The Movie',
             poster: 'https://thepic.com',
             year: '1982',
-            list: list});
+            list: existingList._id
+        });
         newMovie.save();
+        existingList.movies.push(newMovie);
+        existingList.save();
+    });
+
+    app.get('/api/fetch_lists', async (req, res, next) => {
+        const userLists = await List.find({user: req.user._id});
+        // console.log(userLists);
+        res.send(userLists);
+    });
+
+    app.get('/api/fetch_list_movies', async (req, res, next) => {
+        console.log('fired');
+        const listID = req;
+        console.log(listID);
+        const list = await List.find({_id: listID});
+        console.log(list);
+        // res.send(list);
     });
 };

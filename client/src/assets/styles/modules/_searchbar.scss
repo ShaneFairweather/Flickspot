@@ -1,10 +1,3 @@
-.searchbar-container {
-  //@include screen('sm') {
-  //  padding: 1.5rem;
-  //  background-color: #404040;
-  //  max-height: 6rem;
-  //}
-}
 
 .searchbar {
   display: flex;
@@ -12,11 +5,6 @@
   font-weight: 100;
   width: 100%;
   height: 100%;
-  //@include screen('md') {
-  //  flex: 0 0 40%;
-  //  align-items: center;
-  //  justify-content: center;
-  //}
   &__input {
     font-family: inherit;
     font-size: 1.2rem;
@@ -28,19 +16,16 @@
     margin-right: -3.25rem;
     font-weight: 100;
     width: 100%;
-    //@include screen('sm') {
-    //  width: 100%;
-    //  border-radius: 100px;
-    //}
     @include screen('md') {
       background-color: $dark-3;
+      color: $gray-3;
     }
     &:focus {
       outline: none;
       background-color: $gray-2;
-      //@include screen('sm') {
-      //  width: 56%;
-      //}
+      @include screen('md') {
+        background-color: $dark-1;
+      }
     }
 
     &::-webkit-input-placeholder {

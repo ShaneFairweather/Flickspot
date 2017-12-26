@@ -4,7 +4,10 @@ import {
     FETCH_USER,
     FETCH_MOVIE_BY_ID,
     FETCH_SEARCH_RESULTS,
-    CREATE_LIST, ADD_MOVIE
+    CREATE_LIST,
+    ADD_MOVIE,
+    FETCH_LISTS,
+    FETCH_LIST_MOVIES
 } from "./actionTypes";
 import keys from '../config/keys';
 
@@ -39,6 +42,17 @@ export const createList = (title, description) =>
         dispatch({type: CREATE_LIST, payload: req });
     };
 
+export const fetchLists = (user) =>
+    async dispatch => {
+        const req = await axios.get('/api/fetch_lists', {user});
+        dispatch({type: FETCH_LISTS, payload: req });
+    };
+
+export const fetchListMovies = (listID) =>
+    async dispatch => {
+        const req = await axios.get('/api/fetch_list_movies', {listID});
+        dispatch({type: FETCH_LIST_MOVIES, payload: req });
+    };
 
 export const addMovie = (title, description) =>
     async dispatch => {

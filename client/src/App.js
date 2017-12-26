@@ -7,15 +7,15 @@ import Header from './components/Header';
 import Searchbar from './components/Searchbar';
 import Home from './components/Home';
 import ShowMovie from './components/ShowMovie';
-import SignIn from './components/SignIn';
+import ViewLists from './components/ViewLists';
 import CreateList from './components/CreateList';
+import ShowList from './components/ShowList';
 import Footer from './components/Footer';
 
 
 class App extends Component {
     componentDidMount() {
         this.props.fetchUser();
-        console.log('test');
         this.props.fetchFeaturedMovies();
     }
 
@@ -46,13 +46,13 @@ class App extends Component {
                                 component={CreateList}
                             />
                             <Route
+                                path="/view-lists"
+                                component={ViewLists}
+                            />
+                            <Route
                                 exact
-                                path="/signin"
-                                render={(props) => (
-                                    <SignIn
-                                        {...props}
-                                        user={this.props.user}
-                                    />)}
+                                path="/lists/:id"
+                                component={ShowList}
                             />
                         </div>
                         <Footer />

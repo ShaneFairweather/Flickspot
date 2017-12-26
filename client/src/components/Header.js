@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Logo from '../assets/images/fslogo.png';
 import Searchbar from './Searchbar';
-import Signin from './SignIn';
 import SocialButton from './SocialButton';
 
 class Header extends Component {
@@ -37,14 +36,14 @@ class Header extends Component {
                 return (
                     <nav className="user-nav">
                         <div className="user-nav__icon-box">
-                            <span
+                            <div
                                 onClick={this.handleDropdownSelect}
-                                className="user-nav__login">Login</span>
+                                className="user-nav__login">Login</div>
                         </div>
                         <ul className={"user-nav__dropdown user-nav__dropdown--login " + loginDropdownStatus}>
-                            <li><SocialButton brand="google" icon="google" color="#cb3f23"/></li>
-                            <li><SocialButton brand="facebook" icon="facebook-official" color="#3c5898"/></li>
-                            <li><SocialButton brand="github" icon="github" color="#333333"/></li>
+                            <li><SocialButton brand="google" icon="google" color="#cb3f23" hover="#a5331c" /></li>
+                            <li><SocialButton brand="facebook" icon="facebook-official" color="#3c5898" hover="#293e69"/></li>
+                            <li><SocialButton brand="github" icon="github" color="#333333" hover="#555555"/></li>
                         </ul>
                     </nav>
                 );
@@ -59,7 +58,9 @@ class Header extends Component {
                             </Link>
                         </div>
                         <div className="user-nav__icon-box">
-                            <i className="fa fa-list user-nav__icon"/>
+                            <Link to="/view-lists">
+                                <i className="fa fa-list user-nav__icon"/>
+                            </Link>
                         </div>
                         <div className="user-nav__icon-box">
                             <div

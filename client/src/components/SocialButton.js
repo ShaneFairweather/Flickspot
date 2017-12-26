@@ -1,8 +1,16 @@
 import React from 'react';
+import Radium from 'radium';
 
 const SocialButton = (props) => {
+    const style = {
+        backgroundColor: props.color,
+        ':hover': {
+            backgroundColor: props.hover
+        }
+    };
+
     return (
-        <div className="social-button" style={{backgroundColor: props.color}}>
+        <div className="social-button" style={style}>
             <a href={'/auth/' + props.brand} >
                 <div className="social-button__icon">
                     <i className={'fa fa-' + props.icon} />
@@ -15,4 +23,4 @@ const SocialButton = (props) => {
     )
 };
 
-export default SocialButton;
+export default Radium(SocialButton);

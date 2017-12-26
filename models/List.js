@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const MovieSchema = mongoose.Schema;
 const { Schema } = mongoose;
 
 const ListSchema = new Schema({
@@ -10,7 +11,7 @@ const ListSchema = new Schema({
         default: "No description added"
     },
     user: {type: Schema.ObjectId, ref: 'User', required: true},
-    movies: [{type: Schema.ObjectId, ref: 'List', required: true}],
+    movies: [{type: Schema.ObjectId, ref: 'Movie'}]
 });
 
 mongoose.model('lists', ListSchema);

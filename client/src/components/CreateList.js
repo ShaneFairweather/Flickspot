@@ -53,9 +53,9 @@ class CreateList extends Component {
 
     renderButton() {
         if(this.state.buttonState === 'disabled') {
-            return <button disabled onClick={(e) => this.onNubmit(e)}>Click button</button>
+            return <button disabled onClick={(e) => this.onSubmit(e)}>Click button</button>
         } else {
-            return <button onClick={(e) => this.onNubmit(e)}>Click button</button>
+            return <button onClick={(e) => this.onSubmit(e)}>Click button</button>
         }
     }
 

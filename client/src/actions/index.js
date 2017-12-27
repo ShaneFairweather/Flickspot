@@ -50,7 +50,7 @@ export const fetchLists = (user) =>
 
 export const fetchListMovies = (listID) =>
     async dispatch => {
-        const req = await axios.get('/api/fetch_list_movies', {listID});
+        const req = await axios.get(`/api/lists/${listID}`);
         dispatch({type: FETCH_LIST_MOVIES, payload: req });
     };
 

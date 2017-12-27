@@ -49,12 +49,13 @@ module.exports = app => {
         res.send(userLists);
     });
 
-    app.get('/api/fetch_list_movies', async (req, res, next) => {
+    app.get('/api/lists/:id', async (req, res, next) => {
         console.log('fired');
-        const listID = req;
-        console.log(listID);
+        const listID = req.params.id;
+        // console.log(listID);
         const list = await List.find({_id: listID});
         console.log(list);
+        // const moves = await Movie.find({_id: })
         // res.send(list);
     });
 };

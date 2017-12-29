@@ -4,6 +4,7 @@ import featuredMoviesReducer from './featuredMoviesReducer';
 import movieReducer from './movieReducer';
 import searchReducer from './searchReducer';
 import listsReducer from './listsReducer';
+import listItemsReducer from './listItemsReducer';
 
 export default combineReducers({
     auth: authReducer,
@@ -11,4 +12,5 @@ export default combineReducers({
     movie: movieReducer,
     query: searchReducer,
     lists: listsReducer,
+    listItems: listItemsReducer
 });

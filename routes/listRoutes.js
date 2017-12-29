@@ -53,9 +53,10 @@ module.exports = app => {
         console.log('fired');
         const listID = req.params.id;
         // console.log(listID);
-        const list = await List.find({_id: listID});
-        console.log(list);
-        // const moves = await Movie.find({_id: })
+        // const list = await List.find({_id: listID});
+        const movies = await Movie.find({list: listID});
+        res.send(movies);
+        // console.log(movies);
         // res.send(list);
     });
 };

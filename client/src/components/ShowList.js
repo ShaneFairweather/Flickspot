@@ -2,18 +2,32 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import MovieCard from './MovieCard';
 
 class ShowList extends Component {
     componentDidMount() {
         const id = this.props.match.params.id;
-        console.log(id);
-        this.props.fetchListMovies('5a418a1ea7c3360f44fe267d');
+        this.props.fetchListMovies(id);
+        console.log(this.props.listItems);
+    }
+
+    renderMovies() {
+        const movies = this.props.listItems;
+        if(movies) {
+            console.log(movies.data);
+            return movies.data.map((movie) => {
+                return (
+                    <MovieCard key={movie.id} movie={movie} />
+                )
+            });
+        }
     }
 
     render() {
         return (
-            <div className="">
+            <div className="show-list">
                 <div>This is the show list</div>
+                {this.renderMovies()}
             </div>
         )
     }
@@ -21,7 +35,7 @@ class ShowList extends Component {
 
 function mapStateToProps(state) {
     return {
-        listMovies: state.listMovies
+        listItems: state.listItems
     }
 }
 

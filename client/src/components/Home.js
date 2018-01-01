@@ -1,6 +1,5 @@
 import React from 'react';
 import FeaturedMovies from './FeaturedMovies';
-import FeaturedLists from './FeaturedLists';
 import Banner from './Banner';
 
 const Home = (props) => {

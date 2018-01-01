@@ -9,13 +9,9 @@ class CreateList extends Component {
         buttonState: 'disabled'
     }
 
-    componentDidMount() {
-        // this.props.createList();
-    }
 
     onSubmit(e) {
         e.preventDefault();
-        console.log('test');
         this.props.createList(this.state.title, this.state.description);
         this.props.history.push("/view-lists");
         this.setState({
@@ -27,15 +23,12 @@ class CreateList extends Component {
     onNubmit(e) {
         e.preventDefault();
         this.props.addMovie();
-        console.log('firing the action');
     }
 
     handleTitleChange(e) {
         this.setState({
             title: e.target.value
         }, () => {this.validateForm()});
-        // console.log(this.state.title);
-        // this.validateForm();
     }
 
     handleDescriptionChange(e) {

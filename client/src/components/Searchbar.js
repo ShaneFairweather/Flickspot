@@ -63,9 +63,7 @@ class Searchbar extends Component {
                         value={this.state.queryString}
                         onChange={e => this.onSearchChange(e)}
                     />
-                    {/*<button className="searchbar__button">*/}
-                        <i className="fa fa-search searchbar__icon" aria-hidden="true"/>
-                    {/*</button>*/}
+                    <i className="fa fa-search searchbar__icon" aria-hidden="true"/>
                 </form>
                 <div className={"searchbar-results " + resultsVisible}>
                     <ul>{this.renderSearchResults()}</ul>
@@ -76,7 +74,6 @@ class Searchbar extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state);
     return {
         queryResults: state.query
     };

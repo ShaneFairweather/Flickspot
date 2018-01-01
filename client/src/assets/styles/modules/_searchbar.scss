@@ -41,13 +41,8 @@
   &__button {
     border: none;
     background-color: transparent;
-    //transition: all .1s;
-    @include screen('md') {
-      //background-color: $dark-3;
-    }
     &:focus {
       outline: none;
-      //background-color: $gray-3;
     }
   }
   &__icon {
@@ -63,24 +58,16 @@
 }
 
 .searchbar-results {
-  //flex: 0 0 40%;
   background-color: $dark-1;
   width: 100%;
-  //top: 100px;
   margin: 0 auto;
   max-height: 400px;
   overflow-y: scroll;
   z-index: 10000;
-  //display: flex;
-  //flex-direction: row;
-  //left: 50.5%;
-  //top: 41.4%;
-  //transform: translate(-50%,-50%);
   display: none;
   position: absolute;
   @include screen('md') {
     position: relative;
-    //top: 60px;
   }
   a {
     display: flex;

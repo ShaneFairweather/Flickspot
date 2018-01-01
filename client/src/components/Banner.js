@@ -3,10 +3,8 @@ import { Link } from 'react-router-dom'
 
 const Banner = (props) => {
     const renderBannerContent = () => {
-        console.log(props.featuredMovies);
         if(props.featuredMovies) {
             const movie = props.featuredMovies.results[0];
-            console.log(movie);
             return (
                 <div>
                     <Link to={`/movies/${movie.id}`}>

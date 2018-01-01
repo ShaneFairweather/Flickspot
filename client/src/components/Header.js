@@ -12,7 +12,6 @@ class Header extends Component {
         this.setState({
             isOpen: !this.state.isOpen
         });
-        console.log(this.state.isOpen)
     };
 
     componentWillMount() {

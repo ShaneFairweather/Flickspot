@@ -1,7 +1,6 @@
 .banner {
   color: white;
   background-size: cover;
-  //background-position: center;
   background-position-y: 18%;
   font-family: $font-stack;
   display: flex;
@@ -15,10 +14,6 @@
       text-decoration: none;
     }
   }
-  //,container--main {
-  //  padding-top: 5rem;
-  //  padding-bottom: 5rem;
-  //}
   &__header {
     font-size: 1.6rem;
   }

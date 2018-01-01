@@ -18,8 +18,6 @@ module.exports = app => {
 
 
     app.post('/api/add_movie', async (req, res, next) => {
-        console.log('fired');
-
         const title = req.body.title;
         const poster = req.body.poster;
         const bannerPath = req.body.bannerPath;
@@ -29,8 +27,6 @@ module.exports = app => {
 
 
         const existingList = await List.findOne({ _id: listID });
-        // console.log(existingList.movieIDs);
-        // console.log(typeof movieID);
         if(!existingList.movieIDs.includes(movieID.toString())) {
             const newMovie = new Movie({
                 title: title,
@@ -40,9 +36,6 @@ module.exports = app => {
                 id: movieID,
                 list: existingList._id
             });
-            // console.log(newMovie._id);
-            // console.log(existingList.movies.includes(newMovie._id));
-
             newMovie.save();
             existingList.movies.push(newMovie);
             existingList.movieIDs.push(newMovie.id);
@@ -58,8 +51,6 @@ module.exports = app => {
 
     app.get('/api/lists/:id', async (req, res, next) => {
         const listID = req.params.id;
-        // console.log(listID);
-        // const list = await List.find({_id: listID});
         const movies = await Movie.find({list: listID}).lean();
         const list = await List.find({_id: listID});
         const author = await User.find({_id: list[0].user});

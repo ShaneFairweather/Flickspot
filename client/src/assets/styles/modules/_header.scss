@@ -1,14 +1,10 @@
 .header {
   height: 6rem;
   background-color: $dark-3;
-  //display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 1.4rem;
   border-bottom: 1px solid #3a3a3a;
-  //& > * {
-  //  border-left: 1px solid gray;
-  //}
   &__brand {
     padding-right: 20px;
     @include screen('md') {
@@ -32,7 +28,6 @@
     letter-spacing: 3px;
   }
   .searchbar-container {
-    //display: flex;
     width: 100%;
     @include screen('md', max) {
       display: none;
@@ -54,13 +49,8 @@
     height: 100%;
     display: flex;
     align-items: center;
-    &:hover {
-      //background-color: $gray-3;
-    }
   }
   &__icon-box {
-    //border-left: .5px solid gray;
-    //border-right: .5px solid #3a3a3a;
     a {
       color: white;
       &:hover {
@@ -72,7 +62,6 @@
     }
   }
   &__icon-box:first-of-type {
-    //padding-right: 0;
     @include screen('md') {
       border-left: .5px solid #3a3a3a;
     }
@@ -84,16 +73,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    //color: inherit;
     &:hover {
       text-decoration: none;
       color: $main;
-      //border: 2px solid $main;
       transition: .2s ease-in-out;
     }
   }
   &__profile {
-    //display: flex;
     overflow: hidden;
     img {
       border-radius: 50%;
@@ -106,14 +92,9 @@
   &__dropdown {
     position: absolute;
     top: 6rem;
-    //left: 2rem;
     background-color: $dark-1;
     list-style: none;
-    //display: flex;
-    //flex-direction: column;
     height: auto;
-    //justify-content: flex-start;
-    //align-items: flex-start;
     border-radius: 6px;
     padding-left: 0;
     padding-right: 0;

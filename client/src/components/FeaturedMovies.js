@@ -4,7 +4,6 @@ import MovieCard from './MovieCard';
 const FeaturedMovies = ({ movies }) => {
     const renderFeaturedMoviesList = () => {
         if(movies) {
-            console.log(movies);
             return movies.results.slice(1, 11).map((movie) => {
                 return (
                         <MovieCard key={movie.id} movie={movie} />

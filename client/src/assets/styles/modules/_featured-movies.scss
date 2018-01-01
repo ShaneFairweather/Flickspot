@@ -2,16 +2,12 @@
   &__list {
     display: flex;
     flex-wrap: wrap;
-    //overflow-x: auto;
     justify-content: center;
     @include screen('sm') {
       justify-content: space-around;
     }
     @include screen('md') {
       justify-content: space-between;
-    }
-    li {
-      //padding: 20px 20px 20px 0;
     }
   }
 }

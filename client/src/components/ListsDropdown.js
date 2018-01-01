@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 const ListDropdown = (props) => {
     const listsDropdownIsOpen = props.listsDropdownIsOpen ? "listContainerOpen" : "";
     const renderLists = () => {
-        // console.log('rendering begins');
         if (props.lists) {
             const lists = props.lists.data;
             return lists.map(list => {

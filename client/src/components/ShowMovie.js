@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 import ReactStars from 'react-stars'
 import ActorsList from './ActorsList';
-import {createList} from "../actions/index";
-import { Link } from 'react-router-dom';
 import ListsDropdown from './ListsDropdown';
 
 class ShowMovie extends Component {
@@ -15,7 +13,6 @@ class ShowMovie extends Component {
     componentDidMount() {
         const id = this.props.match.params.id;
         this.props.fetchMovieById(id);
-        // this.fetchLists();
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -30,16 +27,9 @@ class ShowMovie extends Component {
     }
 
     renderLists() {
-        console.log('rendering begins');
         if (this.props.lists) {
             const lists = this.props.lists.data;
-            console.log(lists.length);
-            console.log(this.props.movie.id);
             return lists.map(list => {
-                // console.log(list.movieIDs.includes(this.props.movie.id));
-                console.log(list.movieIDs);
-                console.log(this.props.movie.id);
-                console.log(list.movieIDs.includes(this.props.movie.id.toString()));
                 if(list.movieIDs.includes(this.props.movie.id.toString())) {
                     return <div className="movie-details__list movie-details__list--disabled">{list.title}</div>
                 } else {
@@ -61,7 +51,7 @@ class ShowMovie extends Component {
     toggleListsOpen() {
         this.setState({
             listsDropdownIsOpen: !this.state.listsDropdownIsOpen
-        })
+        });
         this.fetchLists();
     }
 
@@ -109,7 +99,6 @@ class ShowMovie extends Component {
                                     </div>
                                     <div className="movie-details__header__content">
                                         <h2 className="movie-details__header__title">{movie.original_title}<span className="movie-details__header__year"> ({movie.release_date.slice(0, 4)})</span></h2>
-                                        {/*<div className="movie-details__score">{movie.vote_average}</div>*/}
                                         <ReactStars
                                             count={5}
                                             size={24}
@@ -131,12 +120,6 @@ class ShowMovie extends Component {
                                                 movie={this.props.movie}
                                                 addMovieToList={this.addMovieToList}
                                             />
-                                            {/*<div className={"movie-details__list-container " + listsDropdownIsOpen}>*/}
-                                                {/*Select a list to add to:*/}
-                                                {/*{this.renderLists()}*/}
-                                                {/*&nbsp;<br />*/}
-                                                {/*<Link to="/create-list"><span className="movie-details__list-container__button"><i className="fa fa-plus"/>Create new list</span></Link>*/}
-                                            {/*</div>*/}
                                         </ul>
                                     </div>
                                 </div>
@@ -172,12 +155,6 @@ class ShowMovie extends Component {
                                             movie={this.props.movie}
                                             addMovieToList={this.addMovieToList}
                                         />
-                                        {/*<div className={"movie-details__list-container " + listsDropdownIsOpen}>*/}
-                                            {/*Select a list to add to:*/}
-                                            {/*{this.renderLists()}*/}
-                                            {/*&nbsp;<br />*/}
-                                            {/*<Link to="/create-list"><span className="movie-details__list-container__button"><i className="fa fa-plus"/>Create new list</span></Link>*/}
-                                        {/*</div>*/}
                                     </ul>
                                 </div>
                             </div>
@@ -199,7 +176,6 @@ class ShowMovie extends Component {
 };
 
 function mapStateToProps(state) {
-    // console.log(state);
     return {
         movie: state.movie,
         lists: state.lists

@@ -9,7 +9,6 @@ const Home = (props) => {
             <Banner featuredMovies={props.featuredMovies} />
             <div className="container container--main">
                 <FeaturedMovies movies={props.featuredMovies} />
-                <FeaturedLists />
             </div>
         </div>
     )

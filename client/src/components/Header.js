@@ -71,7 +71,7 @@ class Header extends Component {
                         </div>
                         <ul className={"user-nav__dropdown " + dropdownStatus}>
                             <li className="user-nav__dropdown__item user-nav__dropdown__item--header">{username}</li>
-                            <li><a className="user-nav__dropdown__item">Lists</a></li>
+                            <li><Link className="user-nav__dropdown__item" to="/view-lists">Lists</Link></li>
                             <li><a className="user-nav__dropdown__item">Edit Profile</a></li>
                             <li><a className="user-nav__dropdown__item user-nav__dropdown__item--footer" href="/api/logout">Logout</a></li>
                         </ul>

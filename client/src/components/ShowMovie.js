@@ -3,11 +3,19 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 import ReactStars from 'react-stars'
 import ActorsList from './ActorsList';
+import {createList} from "../actions/index";
+import { Link } from 'react-router-dom';
+import ListsDropdown from './ListsDropdown';
 
 class ShowMovie extends Component {
+    state = {
+        listsDropdownIsOpen: false
+    }
+
     componentDidMount() {
         const id = this.props.match.params.id;
         this.props.fetchMovieById(id);
+        // this.fetchLists();
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -15,6 +23,46 @@ class ShowMovie extends Component {
         if(this.props.match.params.id !== prevProps.match.params.id) {
             this.props.fetchMovieById(id);
         }
+    }
+
+    fetchLists() {
+        this.props.fetchLists();
+    }
+
+    renderLists() {
+        console.log('rendering begins');
+        if (this.props.lists) {
+            const lists = this.props.lists.data;
+            console.log(lists.length);
+            console.log(this.props.movie.id);
+            return lists.map(list => {
+                // console.log(list.movieIDs.includes(this.props.movie.id));
+                console.log(list.movieIDs);
+                console.log(this.props.movie.id);
+                console.log(list.movieIDs.includes(this.props.movie.id.toString()));
+                if(list.movieIDs.includes(this.props.movie.id.toString())) {
+                    return <div className="movie-details__list movie-details__list--disabled">{list.title}</div>
+                } else {
+                    return (
+                        <div className="movie-details__list"
+                             key={list._id}
+                             itemID={list._id}
+                             list={list}
+                             onClick={(e) => this.addMovieToList(e)}
+                        >
+                            {list.title}
+                        </div>
+                    )
+                }
+            });
+        }
+    }
+
+    toggleListsOpen() {
+        this.setState({
+            listsDropdownIsOpen: !this.state.listsDropdownIsOpen
+        })
+        this.fetchLists();
     }
 
     renderTrailer() {
@@ -30,7 +78,22 @@ class ShowMovie extends Component {
         }
     }
 
+    addMovieToList = (e) => {
+        const movie = this.props.movie;
+        const listID = e.target.getAttribute("itemID");
+        this.props.addMovie(
+            movie.original_title,
+            movie.poster_path,
+            movie.backdrop_path,
+            movie.release_date.slice(0, 4),
+            movie.id,
+            listID
+        );
+        this.toggleListsOpen();
+    };
+
     renderMovieDetails() {
+        const listsDropdownIsOpen = this.state.listsDropdownIsOpen ? "listContainerOpen" : "";
         const movie = this.props.movie;
         if(movie) {
             return (
@@ -55,10 +118,25 @@ class ShowMovie extends Component {
                                             edit={false}
                                         />
                                         <ul className="movie-details__icon-row">
-                                            <li className="movie-details__icon-box">
+                                            <li className="movie-details__icon-box"
+                                                onClick={() => this.toggleListsOpen()}
+                                            >
                                                 <i className="fa fa-list movie-details__icon" />
                                             </li>
                                             {this.renderTrailer()}
+                                            <ListsDropdown
+                                                renderLists={this.renderLists}
+                                                listsDropdownIsOpen={listsDropdownIsOpen}
+                                                lists={this.props.lists}
+                                                movie={this.props.movie}
+                                                addMovieToList={this.addMovieToList}
+                                            />
+                                            {/*<div className={"movie-details__list-container " + listsDropdownIsOpen}>*/}
+                                                {/*Select a list to add to:*/}
+                                                {/*{this.renderLists()}*/}
+                                                {/*&nbsp;<br />*/}
+                                                {/*<Link to="/create-list"><span className="movie-details__list-container__button"><i className="fa fa-plus"/>Create new list</span></Link>*/}
+                                            {/*</div>*/}
                                         </ul>
                                     </div>
                                 </div>
@@ -81,10 +159,25 @@ class ShowMovie extends Component {
                                     />
                                     <p className="movie-details__overview">{movie.overview}</p>
                                     <ul className="movie-details__icon-row">
-                                        <li className="movie-details__icon-box">
+                                        <li className="movie-details__icon-box"
+                                            onClick={() => this.toggleListsOpen()}
+                                        >
                                             <i className="fa fa-list movie-details__icon" />
                                         </li>
                                         {this.renderTrailer()}
+                                        <ListsDropdown
+                                            renderLists={this.renderLists}
+                                            listsDropdownIsOpen={listsDropdownIsOpen}
+                                            lists={this.props.lists}
+                                            movie={this.props.movie}
+                                            addMovieToList={this.addMovieToList}
+                                        />
+                                        {/*<div className={"movie-details__list-container " + listsDropdownIsOpen}>*/}
+                                            {/*Select a list to add to:*/}
+                                            {/*{this.renderLists()}*/}
+                                            {/*&nbsp;<br />*/}
+                                            {/*<Link to="/create-list"><span className="movie-details__list-container__button"><i className="fa fa-plus"/>Create new list</span></Link>*/}
+                                        {/*</div>*/}
                                     </ul>
                                 </div>
                             </div>
@@ -108,7 +201,8 @@ class ShowMovie extends Component {
 function mapStateToProps(state) {
     // console.log(state);
     return {
-        movie: state.movie
+        movie: state.movie,
+        lists: state.lists
     }
 }
 

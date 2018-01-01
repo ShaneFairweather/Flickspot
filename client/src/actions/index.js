@@ -54,9 +54,9 @@ export const fetchListMovies = (listID) =>
         dispatch({type: FETCH_LIST_MOVIES, payload: req });
     };
 
-export const addMovie = (title, description) =>
+export const addMovie = (title, poster, bannerPath, year, movieID, list) =>
     async dispatch => {
-        const req = await axios.post('/api/add_movie', {title, description});
+        const req = await axios.post('/api/add_movie', {title, poster, bannerPath, year, movieID, list});
         dispatch({type: ADD_MOVIE, payload: req });
     };
 

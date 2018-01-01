@@ -59,7 +59,7 @@ class Searchbar extends Component {
                     <input
                         type="search"
                         className="searchbar__input"
-                        placeholder="Search films or shows"
+                        placeholder="Search for a movie"
                         value={this.state.queryString}
                         onChange={e => this.onSearchChange(e)}
                     />

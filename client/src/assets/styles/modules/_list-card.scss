@@ -1,11 +1,11 @@
 .list-card {
   color: white;
   box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.32);
-  background-color: #435480;
+  background-color: $main-dark;
   //padding: 3rem 8rem;
   max-width: 400px;
-  width: 500px;
-  height: 250px;
+  width: 350px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;

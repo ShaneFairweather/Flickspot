@@ -11,7 +11,8 @@ const ListSchema = new Schema({
         default: "No description added"
     },
     user: {type: Schema.ObjectId, ref: 'User', required: true},
-    movies: [{type: Schema.ObjectId, ref: 'Movie'}]
+    movies: [{type: Schema.ObjectId, ref: 'Movie'}],
+    movieIDs: []
 });
 
 mongoose.model('lists', ListSchema);

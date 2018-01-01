@@ -17,6 +17,7 @@ class CreateList extends Component {
         e.preventDefault();
         console.log('test');
         this.props.createList(this.state.title, this.state.description);
+        this.props.history.push("/view-lists");
         this.setState({
             title: '',
             description: ''

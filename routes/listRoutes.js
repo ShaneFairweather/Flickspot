@@ -18,45 +18,54 @@ module.exports = app => {
 
 
     app.post('/api/add_movie', async (req, res, next) => {
-        // const list = req.body.listID;
-        const existingList = await List.findOne({ title: "The Big List" });
-        console.log(existingList);
-        // const getListID = List.findOne({title: "A Different List"}).exec();
-        // getListID.then(function(list) {
-        //             // function() {
-        //             //     return list._id;
-        //             // }
-        //         });
+        console.log('fired');
 
-        // getListID('John')
-        //     .then(function(city) {
-        //         console.log(city);
-        //     });
-        const newMovie = new Movie({
-            title: 'The Movie',
-            poster: 'https://thepic.com',
-            year: '1982',
-            list: existingList._id
-        });
-        newMovie.save();
-        existingList.movies.push(newMovie);
-        existingList.save();
+        const title = req.body.title;
+        const poster = req.body.poster;
+        const bannerPath = req.body.bannerPath;
+        const year = req.body.year;
+        const movieID = req.body.movieID;
+        const listID = req.body.list;
+
+
+        const existingList = await List.findOne({ _id: listID });
+        // console.log(existingList.movieIDs);
+        // console.log(typeof movieID);
+        if(!existingList.movieIDs.includes(movieID.toString())) {
+            const newMovie = new Movie({
+                title: title,
+                poster_path: poster,
+                banner_path: bannerPath,
+                year: year,
+                id: movieID,
+                list: existingList._id
+            });
+            // console.log(newMovie._id);
+            // console.log(existingList.movies.includes(newMovie._id));
+
+            newMovie.save();
+            existingList.movies.push(newMovie);
+            existingList.movieIDs.push(newMovie.id);
+            existingList.save();
+        }
+
     });
 
     app.get('/api/fetch_lists', async (req, res, next) => {
         const userLists = await List.find({user: req.user._id});
-        // console.log(userLists);
         res.send(userLists);
     });
 
     app.get('/api/lists/:id', async (req, res, next) => {
-        console.log('fired');
         const listID = req.params.id;
         // console.log(listID);
         // const list = await List.find({_id: listID});
-        const movies = await Movie.find({list: listID});
+        const movies = await Movie.find({list: listID}).lean();
+        const list = await List.find({_id: listID});
+        const author = await User.find({_id: list[0].user});
+        movies[0].username = author[0].username;
+        movies[0].imageURL = author[0].imageURL;
         res.send(movies);
-        // console.log(movies);
-        // res.send(list);
     });
+
 };

@@ -16,6 +16,7 @@
     margin-right: -3.25rem;
     font-weight: 100;
     width: 100%;
+    border-radius: 0;
     @include screen('md') {
       background-color: $dark-3;
       color: $gray-3;

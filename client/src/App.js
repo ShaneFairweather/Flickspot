@@ -11,7 +11,7 @@ import ViewLists from './components/ViewLists';
 import CreateList from './components/CreateList';
 import ShowList from './components/ShowList';
 import Footer from './components/Footer';
-
+import ScrollToTop from './components/ScrollToTop';
 
 class App extends Component {
     componentDidMount() {
@@ -23,40 +23,42 @@ class App extends Component {
         return (
             <div className="app">
                 <BrowserRouter>
-                    <div className="app__body">
-                        <Header />
-                        <div className="content">
-                            <Searchbar />
-                            <Route
-                                exact
-                                path="/"
-                                render={(props) => (
-                                    <Home
-                                        {...props}
-                                        featuredMovies={this.props.featuredMovies}
-                                    />)}
-                            />
-                            <Route
-                                exact
-                                path="/movies/:id"
-                                component={ShowMovie}
-                            />
-                            <Route
-                                path="/create-list"
-                                component={CreateList}
-                            />
-                            <Route
-                                path="/view-lists"
-                                component={ViewLists}
-                            />
-                            <Route
-                                exact
-                                path="/lists/:id"
-                                component={ShowList}
-                            />
+                    <ScrollToTop>
+                        <div className="app__body">
+                            <Header />
+                            <div className="content">
+                                <Searchbar />
+                                <Route
+                                    exact
+                                    path="/"
+                                    render={(props) => (
+                                        <Home
+                                            {...props}
+                                            featuredMovies={this.props.featuredMovies}
+                                        />)}
+                                />
+                                <Route
+                                    exact
+                                    path="/movies/:id"
+                                    component={ShowMovie}
+                                />
+                                <Route
+                                    path="/create-list"
+                                    component={CreateList}
+                                />
+                                <Route
+                                    path="/view-lists"
+                                    component={ViewLists}
+                                />
+                                <Route
+                                    exact
+                                    path="/lists/:id"
+                                    component={ShowList}
+                                />
+                            </div>
+                            <Footer />
                         </div>
-                        <Footer />
-                    </div>
+                    </ScrollToTop>
                 </BrowserRouter>
             </div>
         );
